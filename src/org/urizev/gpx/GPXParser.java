@@ -607,7 +607,7 @@ public class GPXParser {
 		if (node == null) {
 			return null;
 		}
-		Waypoint w = new Waypoint();
+		Waypoint w = new Waypoint(null, 0, 0);
 		NamedNodeMap attrs = node.getAttributes();
 		// check for lat attribute
 		Node latNode = attrs.getNamedItem(GPXConstants.LAT_ATTR);

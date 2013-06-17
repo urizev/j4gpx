@@ -22,10 +22,12 @@
 package org.urizev.gpx.beans;
 
 import java.util.HashSet;
+
 /**
- * This class holds gpx information from a &lt;gpx&gt; node. 
- * <br>
- * <p>GPX specification for this tag:</p>
+ * This class holds gpx information from a &lt;gpx&gt; node. <br>
+ * <p>
+ * GPX specification for this tag:
+ * </p>
  * <code>
  * &lt;gpx version="1.1" creator=""xsd:string [1]"&gt;<br>
  * &nbsp;&nbsp;&nbsp;&lt;metadata&gt; xsd:string &lt;/metadata&gt; [0..1]<br>
@@ -34,128 +36,156 @@ import java.util.HashSet;
  * &nbsp;&nbsp;&nbsp;&lt;trk&gt; xsd:string &lt;/trk&gt; [0..1]<br>
  * &nbsp;&nbsp;&nbsp;&lt;extensions&gt; extensionsType &lt;/extensions&gt; [0..1]<br>
  * &lt;/gpx&gt;<br>
- *</code>
+ * </code>
  */
-public class GPX extends Extension{
+public class GPX extends Extension {
 
-
-	private String version;
 	private String creator;
-	private HashSet<Waypoint> waypoints;
-	private HashSet<Track> tracks;
 	private HashSet<Route> routes;
-	
-	/**
-	 * Returns the version of a gpx object
-	 * @return A String representing the version of this gpx object
-	 */
-	public String getVersion() {
-		return version;
+	private HashSet<Track> tracks;
+	private String version;
+	private HashSet<Waypoint> waypoints;
+
+	public GPX() {
+		this.waypoints = new HashSet<Waypoint>();
+		this.tracks = new HashSet<Track>();
+		this.routes = new HashSet<Route>();
 	}
-	
+
 	/**
-	 * Setter for gpx version property. This maps to <i>version</i> attribute value.
-	 * @param version A String representing the version of a gpx file.
+	 * Adds a new Route to a gpx object
+	 * 
+	 * @param route
+	 *            a {@link Route}
 	 */
-	public void setVersion(String version) {
-		this.version = version;
+	public void addRoute(Route route) {
+		if (this.routes == null) {
+			this.routes = new HashSet<Route>();
+		}
+		this.routes.add(route);
 	}
-	
+
+	/**
+	 * Adds a new track to a gpx object
+	 * 
+	 * @param track
+	 *            a {@link Track}
+	 */
+	public void addTrack(Track track) {
+		if (this.tracks == null) {
+			this.tracks = new HashSet<Track>();
+		}
+		this.tracks.add(track);
+	}
+
+	/**
+	 * Adds a new waypoint to a gpx object
+	 * 
+	 * @param waypoint
+	 *            a {@link Waypoint}
+	 */
+	public void addWaypoint(Waypoint waypoint) {
+		if (this.waypoints == null) {
+			this.waypoints = new HashSet<Waypoint>();
+		}
+		this.waypoints.add(waypoint);
+
+	}
+
 	/**
 	 * Returns the creator of this gpx object
+	 * 
 	 * @return A String representing the creator of a gpx object
 	 */
 	public String getCreator() {
-		return creator;
+		return this.creator;
 	}
-	
+
 	/**
-	 * Setter for gpx creator property. This maps to <i>creator</i> attribute value.
-	 * @param creator A String representing the creator of a gpx file.
+	 * Getter for the list of routes from a gpx object
+	 * 
+	 * @return a HashSet of {@link Route}
+	 */
+	public HashSet<Route> getRoutes() {
+		return this.routes;
+	}
+
+	/**
+	 * Getter for the list of Tracks from a gpx objecty
+	 * 
+	 * @return a HashSet of {@link Track}
+	 */
+	public HashSet<Track> getTracks() {
+		return this.tracks;
+	}
+
+	/**
+	 * Returns the version of a gpx object
+	 * 
+	 * @return A String representing the version of this gpx object
+	 */
+	public String getVersion() {
+		return this.version;
+	}
+
+	/**
+	 * Getter for the list of waypoints from a gpx objecty
+	 * 
+	 * @return a HashSet of {@link Waypoint}
+	 */
+	public HashSet<Waypoint> getWaypoints() {
+		return this.waypoints;
+	}
+
+	/**
+	 * Setter for gpx creator property. This maps to <i>creator</i> attribute
+	 * value.
+	 * 
+	 * @param creator
+	 *            A String representing the creator of a gpx file.
 	 */
 	public void setCreator(String creator) {
 		this.creator = creator;
 	}
-	
-	/**
-	 * Getter for the list of waypoints from a gpx objecty 
-	 * @return a HashSet of {@link Waypoint}
-	 */
-	public HashSet<Waypoint> getWaypoints() {
-		return waypoints;
-	}
-	
-	/**
-	 * Setter for the list of waypoints from a gpx object
-	 * @param waypoints a HashSet of {@link Waypoint}
-	 */
-	public void setWaypoints(HashSet<Waypoint> waypoints) {
-		this.waypoints = waypoints;
-	}
-	
-	/**
-	 * Getter for the list of Tracks from a gpx objecty 
-	 * @return a HashSet of {@link Track}
-	 */
-	public HashSet<Track> getTracks() {
-		return tracks;
-	}
-	
-	/**
-	 * Setter for the list of tracks from a gpx object
-	 * @param tracks a HashSet of {@link Track}
-	 */
-	public void setTracks(HashSet<Track> tracks) {
-		this.tracks = tracks;
-	}
-	
-	/**
-	 * Getter for the list of routes from a gpx object 
-	 * @return a HashSet of {@link Route}
-	 */
-	public HashSet<Route> getRoutes() {
-		return routes;
-	}
-	
+
 	/**
 	 * Setter for the list of routes from a gpx object
-	 * @param routes a HashSet of {@link Route}
+	 * 
+	 * @param routes
+	 *            a HashSet of {@link Route}
 	 */
 	public void setRoutes(HashSet<Route> routes) {
 		this.routes = routes;
 	}
-	
+
 	/**
-	 * Adds a new waypoint to a gpx object
-	 * @param waypoint a {@link Waypoint}
+	 * Setter for the list of tracks from a gpx object
+	 * 
+	 * @param tracks
+	 *            a HashSet of {@link Track}
 	 */
-	public void addWaypoint(Waypoint waypoint) {
-		if(waypoints == null) {
-			waypoints = new HashSet<Waypoint>();
-		}
-		waypoints.add(waypoint);
-		
+	public void setTracks(HashSet<Track> tracks) {
+		this.tracks = tracks;
 	}
-	
+
 	/**
-	 * Adds a new track to a gpx object
-	 * @param track a {@link Track}
+	 * Setter for gpx version property. This maps to <i>version</i> attribute
+	 * value.
+	 * 
+	 * @param version
+	 *            A String representing the version of a gpx file.
 	 */
-	public void addTrack(Track track) {
-		if(tracks == null) {
-			tracks = new HashSet<Track>();
-		}
-		tracks.add(track);
+	public void setVersion(String version) {
+		this.version = version;
 	}
-	
+
 	/**
-	 * Adds a new Route to a gpx object
-	 * @param route a {@link Route}
+	 * Setter for the list of waypoints from a gpx object
+	 * 
+	 * @param waypoints
+	 *            a HashSet of {@link Waypoint}
 	 */
-	public void addRoute(Route route) {
-		if(routes == null) {
-			routes = new HashSet<Route>();
-		}
-		routes.add(route);
+	public void setWaypoints(HashSet<Waypoint> waypoints) {
+		this.waypoints = waypoints;
 	}
 }

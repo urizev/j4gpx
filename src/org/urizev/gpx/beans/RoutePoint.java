@@ -22,10 +22,15 @@
 package org.urizev.gpx.beans;
 
 /**
- * Defines additional route point information that {@link Waypoint} doesn't define.
- * <br>
- * It is currently not used. 
+ * Defines additional route point information that {@link Waypoint} doesn't
+ * define. <br>
+ * It is currently not used.
  */
-public class RoutePoint extends Waypoint{
+public class RoutePoint extends Waypoint {
+
+	public RoutePoint(String name, float latitude, float longitude) {
+		super(name, latitude, longitude);
+		// TODO Auto-generated constructor stub
+	}
 
 }

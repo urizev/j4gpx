@@ -20,11 +20,17 @@
  */
 
 package org.urizev.gpx.beans;
+
 /**
- * Defines additional track point information that {@link Waypoint} doesn't define.
- * <br>
- * It is currently not used. 
+ * Defines additional track point information that {@link Waypoint} doesn't
+ * define. <br>
+ * It is currently not used.
  */
-public class TrackPoint extends Waypoint{
+public class TrackPoint extends Waypoint {
+
+	public TrackPoint(String name, float latitude, float longitude) {
+		super(name, latitude, longitude);
+		// TODO Auto-generated constructor stub
+	}
 
 }
