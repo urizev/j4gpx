@@ -71,7 +71,7 @@ import org.w3c.dom.NodeList;
  */
 public class GPXParser {
 
-	private ArrayList<IExtensionParser> extensionParsers = new ArrayList<IExtensionParser>();
+	private final ArrayList<IExtensionParser> extensionParsers = new ArrayList<IExtensionParser>();
 
 	/**
 	 * Adds a new extension parser to be used when parsing a gpx steam
@@ -456,7 +456,15 @@ public class GPXParser {
 	}
 
 	private String getNodeValueAsString(Node node) {
-		return node.getFirstChild().getNodeValue();
+		if (node == null) {
+			return null;
+		}
+
+		Node child = node.getFirstChild();
+		if (child == null) {
+			return null;
+		}
+		return child.getNodeValue();
 	}
 
 	private Route parseRoute(Node node) throws Exception {
