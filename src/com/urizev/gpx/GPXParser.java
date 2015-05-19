@@ -19,7 +19,7 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx;
+package com.urizev.gpx;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -38,17 +38,18 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.urizev.gpx.beans.GPX;
-import org.urizev.gpx.beans.Route;
-import org.urizev.gpx.beans.Track;
-import org.urizev.gpx.beans.Waypoint;
-import org.urizev.gpx.extensions.IExtensionParser;
-import org.urizev.gpx.types.FixType;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.urizev.gpx.beans.GPX;
+import com.urizev.gpx.beans.Route;
+import com.urizev.gpx.beans.Track;
+import com.urizev.gpx.beans.Waypoint;
+import com.urizev.gpx.extensions.IExtensionParser;
+import com.urizev.gpx.types.FixType;
 
 /**
  * <p>
@@ -554,7 +555,9 @@ public class GPXParser {
 					trk.setType(this.getNodeValueAsString(currentNode));
 				} else if (GPXConstants.TRKSEG_NODE.equals(currentNode
 						.getNodeName())) {
-					trk.setTrackPoints(this.parseTrackSeg(currentNode));
+					ArrayList<Waypoint> segment = this.parseTrackSeg(currentNode);
+					trk.addTrackPoints(segment);
+					trk.addTrackSegment(segment);
 				} else if (GPXConstants.EXTENSIONS_NODE.equals(currentNode
 						.getNodeName())) {
 					Iterator<IExtensionParser> it = this.extensionParsers

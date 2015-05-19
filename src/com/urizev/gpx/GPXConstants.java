@@ -19,7 +19,7 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx;
+package com.urizev.gpx;
 
 public interface GPXConstants {
 	/*GPX nodes and attributes*/

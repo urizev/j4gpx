@@ -19,13 +19,13 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx.beans;
+package com.urizev.gpx.beans;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.urizev.gpx.types.FixType;
+import com.urizev.gpx.types.FixType;
 
 /**
  * This class holds waypoint information from a &lt;wpt&gt; node. <br>

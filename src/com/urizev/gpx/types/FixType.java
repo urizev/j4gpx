@@ -19,7 +19,7 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx.types;
+package com.urizev.gpx.types;
 /**
  * 
  * <p>Type of GPS fix. Value comes from list: {'none'|'2d'|'3d'|'dgps'|'pps'}</p>

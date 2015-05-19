@@ -19,14 +19,15 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx.extensions;
+package com.urizev.gpx.extensions;
 
-import org.urizev.gpx.beans.GPX;
-import org.urizev.gpx.beans.Route;
-import org.urizev.gpx.beans.Track;
-import org.urizev.gpx.beans.Waypoint;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+
+import com.urizev.gpx.beans.GPX;
+import com.urizev.gpx.beans.Route;
+import com.urizev.gpx.beans.Track;
+import com.urizev.gpx.beans.Waypoint;
 
 public class DummyExtensionParser implements IExtensionParser {
 
@@ -60,7 +61,6 @@ public class DummyExtensionParser implements IExtensionParser {
 		node.appendChild(sampleNode);
 	}
 
-	@Override
 	public void writeTrackExtensionData(Node node, Track wpt, Document doc) {
 		Node sampleNode = doc.createElement("mySampleExtension");
 		sampleNode.setNodeValue("mySampleTrackValue");
@@ -68,7 +68,6 @@ public class DummyExtensionParser implements IExtensionParser {
 		
 	}
 
-	@Override
 	public void writeRouteExtensionData(Node node, Route wpt, Document doc) {
 		Node sampleNode = doc.createElement("mySampleExtension");
 		sampleNode.setNodeValue("mySampleRouteValue");

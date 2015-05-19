@@ -19,7 +19,7 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx.beans;
+package com.urizev.gpx.beans;
 
 import java.util.ArrayList;
 

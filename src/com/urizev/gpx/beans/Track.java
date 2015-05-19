@@ -19,7 +19,7 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx.beans;
+package com.urizev.gpx.beans;
 
 import java.util.ArrayList;
 /**
@@ -59,6 +59,7 @@ public class Track extends Extension{
 	private Integer number;
 	private String type;
 	private ArrayList<Waypoint> trackPoints;
+	private ArrayList<ArrayList<Waypoint>> trackSegments;
 	
 	/**
 	 * Returns the name of this track.
@@ -170,6 +171,40 @@ public class Track extends Extension{
 	 */
 	public void setTrackPoints(ArrayList<Waypoint> trackPoints) {
 		this.trackPoints = trackPoints;
+	}
+	
+	/**
+	 * Adds new track points to the list of waypoints of a track.
+	 * @param trackPoints an ArrayList of {@link Waypoint} representing the points of the track.
+	 */
+	public void addTrackPoints(ArrayList<Waypoint> trackPoints) {
+		if (this.trackPoints == null) {
+			this.trackPoints = trackPoints;
+		}
+		else {
+			this.trackPoints.addAll(trackPoints);
+		}
+	}
+
+	/**
+	 * Setter for the list of {@link Waypoint} of a {@link Track}.
+	 * @param trackPoints an ArrayList of {@link Waypoint} representing the points of the {@link Track}.
+	 */
+	public void addTrackSegment(ArrayList<Waypoint> segment) {
+		if (this.trackSegments == null) {
+			this.trackSegments = new ArrayList<>();
+		}
+		this.trackSegments.add(segment);
+	}
+	
+	/**
+	 * Returns the segments of the track
+	 * @param trackPoints an ArrayList of {@link Waypoint} representing the points of the {@link Track}.
+	 * 
+	 * @return A list of segments. Each segment is a list of {@link Waypoint}
+	 */
+	public ArrayList<ArrayList<Waypoint>> getTrackSegments() {
+		return this.trackSegments;
 	}
 	
 	/**

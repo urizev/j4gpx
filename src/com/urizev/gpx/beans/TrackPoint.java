@@ -1,5 +1,5 @@
 /*
- * RoutePoint.java
+ * TrackPoint.java
  * 
  * Copyright (c) 2012, AlternativeVision. All rights reserved.
  *
@@ -19,16 +19,16 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx.beans;
+package com.urizev.gpx.beans;
 
 /**
- * Defines additional route point information that {@link Waypoint} doesn't
+ * Defines additional track point information that {@link Waypoint} doesn't
  * define. <br>
  * It is currently not used.
  */
-public class RoutePoint extends Waypoint {
+public class TrackPoint extends Waypoint {
 
-	public RoutePoint(String name, float latitude, float longitude) {
+	public TrackPoint(String name, float latitude, float longitude) {
 		super(name, latitude, longitude);
 		// TODO Auto-generated constructor stub
 	}

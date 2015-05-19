@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" creator="MapSource 6.15.5" version="1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+    
+    <metadata>
+        <link href="http://www.garmin.com">
+            <text>Garmin International</text>
+        </link>
+        <time>2010-02-26T12:34:51Z</time>
+        <bounds maxlat="55.4671788" maxlon="8.7806700" minlat="53.5943500" minlon="-3.0144167"/>
+    </metadata>
+    
+    <trk>
+        <name>24-JUL-09</name>
+        <extensions>
+            <gpxx:TrackExtension xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+                <gpxx:DisplayColor>DarkRed</gpxx:DisplayColor>
+            </gpxx:TrackExtension>
+        </extensions>
+        <trkseg>
+            <trkpt lat="53.623000" lon="-2.574910">
+                <ele>143.94</ele>
+                <time>2009-07-11T21:37:58Z</time>
+            </trkpt>
+            <trkpt lat="53.624500" lon="-2.569600">
+                <ele>136.06</ele>
+                <time>2009-07-11T21:38:55Z</time>
+            </trkpt>
+            <trkpt lat="53.624500" lon="-2.569410">
+                <ele>138.03</ele>
+                <time>2009-07-11T21:38:57Z</time>
+            </trkpt>
+            <trkpt lat="53.624700" lon="-2.567970">
+                <ele>148.75</ele>
+                <time>2009-07-11T21:39:12Z</time>
+            </trkpt>
+        </trkseg>
+    </trk>
+</gpx>

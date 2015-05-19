@@ -1,0 +1,6 @@
+j4gpx 0.2
+ * Track segment support. A segment is an list of waypoints. After parsing a segment adds all its waypoints to the track list waypoints and add a new segment to the track segment list.
+ * Add minimal test suite (needs to be completed)
+
+j4gpx 0.1
+ * Initial release

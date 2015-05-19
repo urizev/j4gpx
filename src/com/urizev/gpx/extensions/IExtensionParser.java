@@ -19,23 +19,24 @@
  * MA 02110-1301  USA
  */
 
-package org.urizev.gpx.extensions;
+package com.urizev.gpx.extensions;
 
-import org.urizev.gpx.beans.GPX;
-import org.urizev.gpx.beans.Route;
-import org.urizev.gpx.beans.Track;
-import org.urizev.gpx.beans.Waypoint;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+
+import com.urizev.gpx.beans.GPX;
+import com.urizev.gpx.beans.Route;
+import com.urizev.gpx.beans.Track;
+import com.urizev.gpx.beans.Waypoint;
 
 /**
  * This interface defines extension parsers methods. 
  * <br>
  * <p>All custom extension parser must implement this interface.</p>
- * <p>Any custom parser must be added to {@link org.urizev.gpx.GPXParser} as an extension parser 
+ * <p>Any custom parser must be added to {@link com.urizev.gpx.GPXParser} as an extension parser 
  * before parsing a gpx file, or writing a {@link GPX} to a file. This is done by
- * calling addExtensionParser() method of {@link org.urizev.gpx.GPXParser}
- * <p>{@link org.urizev.gpx.GPXParser} parseGPX method calls several methods from the registered 
+ * calling addExtensionParser() method of {@link com.urizev.gpx.GPXParser}
+ * <p>{@link com.urizev.gpx.GPXParser} parseGPX method calls several methods from the registered 
  * extension parsers added at different steps of processing:</p>
  * <ul>
  * <li>parseGPXExtension() for parsing &lt;extensions&gt;  of a &lt;gpx&gt; node</li>
@@ -45,7 +46,7 @@ import org.w3c.dom.Node;
  * </ul>
  * <br>
  * 
- * <p>{@link org.urizev.gpx.GPXParser} writeGPX method also calls several methods from the registered 
+ * <p>{@link com.urizev.gpx.GPXParser} writeGPX method also calls several methods from the registered 
  * extensions parsers at different steps of writing data:</p>
  * <ul>
  * <li>writeGPXExtensionData() when writing  the &lt;extensions&gt;  from the {@link GPX}</li>
