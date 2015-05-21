@@ -2,6 +2,8 @@
 
 A simple GPX reader/writer for Java with non external dependencies and compatible with Android. Based on the work GPXParser by ghitabot (http://sourceforge.net/projects/gpxparser/)
 
+[![Build Status](https://travis-ci.org/urizev/j4gpx.svg?branch=master)](https://travis-ci.org/urizev/j4gpx)
+
 ### Releases
 
 ###### j4gpx-0.2 (2015-05-19) 
