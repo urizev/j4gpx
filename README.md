@@ -4,7 +4,7 @@ A simple GPX reader/writer for Java with non external dependencies and compatibl
 
 [![Build Status](https://travis-ci.org/urizev/j4gpx.svg?branch=master)](https://travis-ci.org/urizev/j4gpx)
 [![License](https://img.shields.io/badge/License-LGPL-brightgreen.svg)](license.txt)
-[![Release](https://img.shields.io/github/release/jitpack/gradle-simple.svg?label=maven)](https://jitpack.io/#urizev/j4lsi)
+[![Release](https://img.shields.io/github/release/jitpack/gradle-simple.svg?label=maven)](https://jitpack.io/#urizev/j4gpx)
 ### Releases
 
 ###### j4gpx-0.2 (2015-05-19) 
