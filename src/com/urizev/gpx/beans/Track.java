@@ -178,9 +178,9 @@ public class Track extends Extension{
 	 * @param trackPoints an ArrayList of {@link Waypoint} representing the points of the track.
 	 */
 	public void addTrackPoints(ArrayList<Waypoint> trackPoints) {
-		if (this.trackPoints == null)
+		if (this.trackPoints == null) {
 			this.trackPoints = new ArrayList<Waypoint>;
-
+		}
 		this.trackPoints.addAll(trackPoints);
 	}
 
@@ -189,9 +189,9 @@ public class Track extends Extension{
 	 * @param trackPoints an ArrayList of {@link Waypoint} representing the points of the {@link Track}.
 	 */
 	public void addTrackSegment(ArrayList<Waypoint> segment) {
-		if (this.trackSegments == null)
+		if (this.trackSegments == null) {
 			this.trackSegments = new ArrayList<>();
-
+		}
 		this.trackSegments.add(segment);
 	}
 	
