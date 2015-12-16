@@ -155,8 +155,11 @@ public class GPXParser {
 		this.extensionParsers.remove(parser);
 	}
 
-	public void writeGPX(GPX gpx, OutputStream out)
-			throws ParserConfigurationException, TransformerException {
+	public void writeGPX(GPX gpx, OutputStream out) throws ParserConfigurationException, TransformerException {
+		this.writeGPX(gpx, out, false);		
+	}
+	
+	public void writeGPX(GPX gpx, OutputStream out, boolean indent) throws ParserConfigurationException, TransformerException {
 		DocumentBuilder builder = DocumentBuilderFactory.newInstance()
 				.newDocumentBuilder();
 		Document doc = builder.newDocument();
@@ -180,7 +183,9 @@ public class GPXParser {
 		// Use a Transformer for output
 		TransformerFactory tFactory = TransformerFactory.newInstance();
 		Transformer transformer = tFactory.newTransformer();
-		transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
+		if (indent) {
+			transformer.setOutputProperty (OutputKeys.INDENT, "yes");
+		}
 
 		DOMSource source = new DOMSource(doc);
 		StreamResult result = new StreamResult(out);
