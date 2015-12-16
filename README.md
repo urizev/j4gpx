@@ -9,8 +9,10 @@ A simple GPX reader/writer for Java with non external dependencies and compatibl
 
 ###### j4gpx-0.3 (2015-12-16) 
  * GPXParser support writing with indentation
- * Bug fix writing GPX with no waypoints (@reciprocum)
- * Minor fix (@reciprocum)
+ * Bug fix writing GPX with no waypoints
+ * Minor fix
+
+Thanks to @reciprocum
  
 ###### j4gpx-0.2 (2015-05-19) 
  * Track segment support. A segment is an list of waypoints. After parsing a segment adds all its waypoints to the track list waypoints and add a new segment to the track segment list.
