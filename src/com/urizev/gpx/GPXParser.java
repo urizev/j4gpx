@@ -179,6 +179,7 @@ public class GPXParser {
 		// Use a Transformer for output
 		TransformerFactory tFactory = TransformerFactory.newInstance();
 		Transformer transformer = tFactory.newTransformer();
+		transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
 
 		DOMSource source = new DOMSource(doc);
 		StreamResult result = new StreamResult(out);
