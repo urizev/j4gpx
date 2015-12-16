@@ -162,17 +162,18 @@ public class GPXParser {
 		Document doc = builder.newDocument();
 		Node gpxNode = doc.createElement(GPXConstants.GPX_NODE);
 		this.addBasicGPXInfoToNode(gpx, gpxNode, doc);
-		if (gpx.getWaypoints() != null) {
-			for (Waypoint wp : gpx.getWaypoints()) {
+
+		if (gpx.getWaypoints() != null)
+			for (Waypoint wp : gpx.getWaypoints())
 				this.addWaypointToGPXNode(wp, gpxNode, doc);
-			}
-			for (Track track : gpx.getTracks()) {
-				this.addTrackToGPXNode(track, gpxNode, doc);
-			}
-			for (Route route : gpx.getRoutes()) {
+
+		if (gpx.getRoutes() != null)
+			for (Route route : gpx.getRoutes())
 				this.addRouteToGPXNode(route, gpxNode, doc);
-			}
-		}
+
+		if (gpx.getTracks() != null)
+			for (Track track : gpx.getTracks())
+				this.addTrackToGPXNode(track, gpxNode, doc);
 
 		doc.appendChild(gpxNode);
 
