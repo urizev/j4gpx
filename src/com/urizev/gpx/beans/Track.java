@@ -179,7 +179,7 @@ public class Track extends Extension{
 	 */
 	public void addTrackPoints(ArrayList<Waypoint> trackPoints) {
 		if (this.trackPoints == null) {
-			this.trackPoints = new ArrayList<Waypoint>;
+			this.trackPoints = new ArrayList<Waypoint>();
 		}
 		this.trackPoints.addAll(trackPoints);
 	}
