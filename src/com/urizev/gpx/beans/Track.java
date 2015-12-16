@@ -172,6 +172,18 @@ public class Track extends Extension{
 	public void setTrackPoints(ArrayList<Waypoint> trackPoints) {
 		this.trackPoints = trackPoints;
 	}
+
+	/**
+	 * Adds this new track point to this track.
+	 * @param trackPoint a {@link Waypoint}.
+	*/
+	public void addTrackPoint(Waypoint trackPoint)
+	{
+	   if (trackPoints == null)
+		trackPoints = new ArrayList<Waypoint>();
+	
+		trackPoints.add(trackPoint);
+	}
 	
 	/**
 	 * Adds new track points to the list of waypoints of a track.
