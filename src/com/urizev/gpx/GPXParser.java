@@ -514,16 +514,11 @@ public class GPXParser {
 					}
 				} else if (GPXConstants.EXTENSIONS_NODE.equals(currentNode
 						.getNodeName())) {
-					Iterator<IExtensionParser> it = this.extensionParsers
-							.iterator();
-					while (it.hasNext()) {
-						while (it.hasNext()) {
-							IExtensionParser parser = it.next();
-							Object data = parser
-									.parseRouteExtension(currentNode);
-							rte.addExtensionData(parser.getId(), data);
-						}
-					}
+				    for ( IExtensionParser extensionParser : extensionParsers )
+				    {
+					Object data = extensionParser.parseRouteExtension( currentNode );
+					if (data != null) rte.addExtensionData( extensionParser.getId( ), data );
+				    }
 				}
 			}
 		}
@@ -568,15 +563,10 @@ public class GPXParser {
 					trk.addTrackSegment(segment);
 				} else if (GPXConstants.EXTENSIONS_NODE.equals(currentNode
 						.getNodeName())) {
-					Iterator<IExtensionParser> it = this.extensionParsers
-							.iterator();
-					while (it.hasNext()) {
-						while (it.hasNext()) {
-							IExtensionParser parser = it.next();
-							Object data = parser
-									.parseTrackExtension(currentNode);
-							trk.addExtensionData(parser.getId(), data);
-						}
+					for ( IExtensionParser extensionParser : extensionParsers )
+					{
+						Object data = extensionParser.parseTrackExtension( currentNode );
+						if (data != null) trk.addExtensionData( extensionParser.getId( ), data );
 					}
 				}
 			}
