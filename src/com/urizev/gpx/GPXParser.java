@@ -71,8 +71,9 @@ import com.urizev.gpx.types.FixType;
  * out.close();<br>
  * </code>
  */
-public class GPXParser {
-
+public class
+GPXParser
+{
 	private final ArrayList<IExtensionParser> extensionParsers = new ArrayList<IExtensionParser>();
 
 	/**
@@ -94,7 +95,11 @@ public class GPXParser {
 	 *         was found in the seream
 	 * @throws Exception
 	 */
-	public GPX parseGPX(InputStream in) throws Exception {
+	public
+	GPX
+	parseGPX( InputStream in, GPXParserOptions options )
+	throws Exception
+	{
 		DocumentBuilder builder = DocumentBuilderFactory.newInstance()
 				.newDocumentBuilder();
 		Document doc = builder.parse(in);
@@ -115,16 +120,18 @@ public class GPXParser {
 			for (int idx = 0; idx < nodes.getLength(); idx++) {
 				Node currentNode = nodes.item(idx);
 				if (GPXConstants.WPT_NODE.equals(currentNode.getNodeName())) {
-					Waypoint w = this.parseWaypoint(currentNode);
-					if (w != null) {
-						gpx.addWaypoint(w);
-					}
+				    	if (!options.skipWaypoints)
+				    	{
+						Waypoint wpt = this.parseWaypoint( currentNode );
+						if (wpt != null) gpx.addWaypoint( wpt );
+				    	}
 				} else if (GPXConstants.TRK_NODE.equals(currentNode
 						.getNodeName())) {
-					Track trk = this.parseTrack(currentNode);
-					if (trk != null) {
-						gpx.addTrack(trk);
-					}
+				    	if (!options.skipTracks)
+				    	{
+						Track trk = this.parseTrack( currentNode );
+						if (trk != null) gpx.addTrack( trk );
+				    	}
 				} else if (GPXConstants.EXTENSIONS_NODE.equals(currentNode
 						.getNodeName())) {
 					for (IExtensionParser parser : this.extensionParsers) {
@@ -133,10 +140,11 @@ public class GPXParser {
 					}
 				} else if (GPXConstants.RTE_NODE.equals(currentNode
 						.getNodeName())) {
-					Route rte = this.parseRoute(currentNode);
-					if (rte != null) {
-						gpx.addRoute(rte);
-					}
+				    	if (!options.skipRoutes)
+				    	{
+						Route rte = this.parseRoute( currentNode );
+						if (rte != null) gpx.addRoute( rte );
+				    	}
 				}
 			}
 			// TODO: parse route node
@@ -144,6 +152,15 @@ public class GPXParser {
 		} else {
 		}
 		return null;
+	}
+
+
+	public
+	GPX
+	parseGPX( InputStream in )
+	throws ParserConfigurationException, SAXException, IOException
+	{
+	    	return parseGPX( in, GPXParserOptions.PARSE_ALL ) ;
 	}
 
 	/**
@@ -156,26 +173,53 @@ public class GPXParser {
 		this.extensionParsers.remove(parser);
 	}
 
-	public void writeGPX(GPX gpx, OutputStream out) throws ParserConfigurationException, TransformerException {
-		this.writeGPX(gpx, out, false);		
+	public
+	void
+	writeGPX( GPX gpx, OutputStream out )
+	throws ParserConfigurationException, TransformerException
+	{
+		this.writeGPX( gpx, out, false, GPXParserOptions.PARSE_ALL ) ;
 	}
+
 	
-	public void writeGPX(GPX gpx, OutputStream out, boolean indent) throws ParserConfigurationException, TransformerException {
+	public
+	void
+	writeGPX( GPX gpx, OutputStream out, boolean indent )
+	throws ParserConfigurationException, TransformerException
+	{
+		this.writeGPX( gpx, out, indent, GPXParserOptions.PARSE_ALL ) ;
+	}
+
+	
+	public
+	void
+	writeGPX( GPX gpx, OutputStream out, GPXParserOptions options )
+	throws ParserConfigurationException, TransformerException
+	{
+		this.writeGPX( gpx, out, false, options ) ;
+	}
+
+	
+	public
+	void
+	writeGPX( GPX gpx, OutputStream out, boolean indent, GPXParserOptions options )
+	throws ParserConfigurationException, TransformerException
+	{
 		DocumentBuilder builder = DocumentBuilderFactory.newInstance()
 				.newDocumentBuilder();
 		Document doc = builder.newDocument();
 		Node gpxNode = doc.createElement(GPXConstants.GPX_NODE);
 		this.addBasicGPXInfoToNode(gpx, gpxNode, doc);
 
-		if (gpx.getWaypoints() != null)
+		if (!options.skipWaypoints  &&  gpx.getWaypoints() != null)
 			for (Waypoint wp : gpx.getWaypoints())
 				this.addWaypointToGPXNode(wp, gpxNode, doc);
 
-		if (gpx.getRoutes() != null)
+		if (!options.skipRoutes  &&  gpx.getRoutes() != null)
 			for (Route route : gpx.getRoutes())
 				this.addRouteToGPXNode(route, gpxNode, doc);
 
-		if (gpx.getTracks() != null)
+		if (!options.skipTracks  &&  gpx.getTracks() != null)
 			for (Track track : gpx.getTracks())
 				this.addTrackToGPXNode(track, gpxNode, doc);
 
@@ -192,6 +236,7 @@ public class GPXParser {
 		StreamResult result = new StreamResult(out);
 		transformer.transform(source, result);
 	}
+
 
 	private void addBasicGPXInfoToNode(GPX gpx, Node gpxNode, Document doc) {
 		NamedNodeMap attrs = gpxNode.getAttributes();
