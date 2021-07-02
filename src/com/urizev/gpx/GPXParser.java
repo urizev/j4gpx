@@ -112,33 +112,35 @@ public class GPXParser {
 				}
 			}
 			NodeList nodes = firstChild.getChildNodes();
-			for (int idx = 0; idx < nodes.getLength(); idx++) {
-				Node currentNode = nodes.item(idx);
-				if (GPXConstants.WPT_NODE.equals(currentNode.getNodeName())) {
-					Waypoint w = this.parseWaypoint(currentNode);
-					if (w != null) {
-						gpx.addWaypoint(w);
-					}
-				} else if (GPXConstants.TRK_NODE.equals(currentNode
-						.getNodeName())) {
-					Track trk = this.parseTrack(currentNode);
-					if (trk != null) {
-						gpx.addTrack(trk);
-					}
-				} else if (GPXConstants.EXTENSIONS_NODE.equals(currentNode
-						.getNodeName())) {
-					for (IExtensionParser parser : this.extensionParsers) {
-						Object data = parser.parseGPXExtension(currentNode);
-						gpx.addExtensionData(parser.getId(), data);
-					}
-				} else if (GPXConstants.RTE_NODE.equals(currentNode
-						.getNodeName())) {
-					Route rte = this.parseRoute(currentNode);
-					if (rte != null) {
-						gpx.addRoute(rte);
+
+			if (nodes != null)
+				for (int idx = 0; idx < nodes.getLength(); idx++) {
+					Node currentNode = nodes.item(idx);
+					if (GPXConstants.WPT_NODE.equals(currentNode.getNodeName())) {
+						Waypoint w = this.parseWaypoint(currentNode);
+						if (w != null) {
+							gpx.addWaypoint(w);
+						}
+					} else if (GPXConstants.TRK_NODE.equals(currentNode
+							.getNodeName())) {
+						Track trk = this.parseTrack(currentNode);
+						if (trk != null) {
+							gpx.addTrack(trk);
+						}
+					} else if (GPXConstants.EXTENSIONS_NODE.equals(currentNode
+							.getNodeName())) {
+						for (IExtensionParser parser : this.extensionParsers) {
+							Object data = parser.parseGPXExtension(currentNode);
+							gpx.addExtensionData(parser.getId(), data);
+						}
+					} else if (GPXConstants.RTE_NODE.equals(currentNode
+							.getNodeName())) {
+						Route rte = this.parseRoute(currentNode);
+						if (rte != null) {
+							gpx.addRoute(rte);
+						}
 					}
 				}
-			}
 			// TODO: parse route node
 			return gpx;
 		} else {
