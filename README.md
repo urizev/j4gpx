@@ -7,7 +7,8 @@ A simple GPX reader/writer for Java with non external dependencies and compatibl
 [![Release](https://img.shields.io/github/release/jitpack/gradle-simple.svg?label=maven)](https://jitpack.io/#urizev/j4gpx)
 ### Releases
 
-###### j4gpx-0.3 (2015-12-16) 
+###### j4gpx-0.3 (2021-07-06) 
+ * Security fix caused by vulnerable version of junit.
  * GPXParser support writing with indentation
  * Bug fix writing GPX with no waypoints
  * Minor fix
